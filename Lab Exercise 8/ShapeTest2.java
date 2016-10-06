@@ -41,5 +41,11 @@ public class ShapeTest2 {
 		System.out.println(sq.getPerimeter());
 		sq.setFilled(false);
 		System.out.println(sq);
+
+		// triangle
+		Triangle t = new Triangle(3, 4, 5);
+		System.out.println(t);
+		System.out.println(t.getArea());
+		System.out.println(t.getPerimeter());
 	}
 }
