@@ -1,9 +1,9 @@
 public class ShapeTest3 {
 	public static void main(String[] args) {
 		Shape2 s1 = new Circle2(5.5, "RED", false); // Upcast Circle to Shape
-		System.out.println(s1); // which version?
-		System.out.println(s1.getArea()); // which version?
-		System.out.println(s1.getPerimeter()); // which version?
+		System.out.println(s1); // which version? Circle
+		System.out.println(s1.getArea()); // which version? Circle's getArea()
+ 		System.out.println(s1.getPerimeter()); // which version? Circle's getPerimeter()
 		System.out.println(s1.getColor());
 		System.out.println(s1.isFilled());
 		//System.out.println(s1.getRadius());   // Shape2 does not have the method getRadius()
