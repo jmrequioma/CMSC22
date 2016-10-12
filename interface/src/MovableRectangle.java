@@ -1,4 +1,4 @@
-public class MovableRectangle implements Movable{
+public class MovableRectangle implements Movable, Drawable{
 
 	MovablePoint topLeft;
 	MovablePoint bottomRight;
@@ -34,6 +34,37 @@ public class MovableRectangle implements Movable{
 		topLeft.moveUp();
 		bottomRight.moveUp();
 		
+	}
+             
+        @Override
+	public void render(){
+	    int horizontaLine = bottomRight.x - topLeft.x;
+	    int verticaLine = topLeft.y - bottomRight.y - 2;
+	    int ctrX = horizontaLine;
+  	    int xSpacing = horizontaLine;
+	    int ySpacing = verticaLine;
+	    while (--ySpacing != 0) { System.out.println(""); }
+	    while (ctrX-- != 1){ 
+		while (--xSpacing != 0) { System.out.print(" "); }    
+		System.out.print("x "); 
+	    }
+	    xSpacing = horizontaLine;
+            System.out.println("x");
+            while (verticaLine-- != 0){
+		while (--xSpacing != 0) { System.out.print(" "); }    
+	        System.out.print("x");
+		ctrX = (2 * horizontaLine) - 3;
+		while (ctrX-- != 0) { 
+		    System.out.print(" "); 
+		}
+		System.out.println("x");
+		xSpacing = horizontaLine;
+	    }
+	    while (--horizontaLine != 0){
+		while (--xSpacing != 0) { System.out.print(" "); }    
+		System.out.print("x "); 
+	    }
+            System.out.println("x");
 	}
 	
 	public String toString(){
