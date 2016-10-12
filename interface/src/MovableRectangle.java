@@ -41,17 +41,29 @@ public class MovableRectangle implements Movable, Drawable{
 	    int horizontaLine = bottomRight.x - topLeft.x;
 	    int verticaLine = topLeft.y - bottomRight.y - 2;
 	    int ctrX = horizontaLine;
-	    while (ctrX-- != 1){ System.out.print("x "); }
+  	    int xSpacing = horizontaLine;
+	    int ySpacing = verticaLine;
+	    while (--ySpacing != 0) { System.out.println(""); }
+	    while (ctrX-- != 1){ 
+		while (--xSpacing != 0) { System.out.print(" "); }    
+		System.out.print("x "); 
+	    }
+	    xSpacing = horizontaLine;
             System.out.println("x");
             while (verticaLine-- != 0){
+		while (--xSpacing != 0) { System.out.print(" "); }    
 	        System.out.print("x");
 		ctrX = (2 * horizontaLine) - 3;
 		while (ctrX-- != 0) { 
 		    System.out.print(" "); 
 		}
-		System.out.println("x");    
+		System.out.println("x");
+		xSpacing = horizontaLine;
 	    }
-	    while (horizontaLine-- != 1){ System.out.print("x "); }
+	    while (--horizontaLine != 0){
+		while (--xSpacing != 0) { System.out.print(" "); }    
+		System.out.print("x "); 
+	    }
             System.out.println("x");
 	}
 	
