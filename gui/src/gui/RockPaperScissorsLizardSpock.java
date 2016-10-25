@@ -44,10 +44,35 @@ public class RockPaperScissorsLizardSpock extends Frame {
 		scissors = new Checkbox("Scissors", choices, false);
 		lizard = new Checkbox("Lizard", choices, false);
 		spock = new Checkbox("Spock", choices, false);
-		ta = new TextArea("Result: ");
+		ta = new TextArea("Result:\n");
 		btnPlay = new Button("RockPaperScissorsLizardSpock!");
 		ok = new Button("OK");
-		dlog = new Dialog(this, "Game Over!");
+		dlog = new Dialog(this, "Game Over!", Dialog.ModalityType.DOCUMENT_MODAL);
+		dlog.setLayout(new FlowLayout());
+		dlog.add(messg);
+		dlog.setSize(200, 200);
+		ok.setSize(10, 10);
+		ok.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				p1fld.setText("0");
+				p2fld.setText("0");
+				p1score = 0;
+				p2score = 0;
+				ta.setText("Result:\n");
+				dlog.dispose();
+			}
+			
+		});
+		dlog.add(ok);
+		dlog.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent we) {
+                System.exit(0);
+            }
+        });
+		
+		
 		
 		ta.setEditable(false);
 		p1fld.setEditable(false);
@@ -57,68 +82,69 @@ public class RockPaperScissorsLizardSpock extends Frame {
             @Override
             public void actionPerformed(ActionEvent e) {
             	String wnnr = "";
-            	if (p1score < 5 && p2score < 5) {
-            		String compChoice = compChoice();
-	                if (rock.getState() == true) {
-	                	if (compChoice == "lizard" || compChoice == "scissors") {
-	                		p1fld.setText(Integer.toString(++p1score));
-	                		ta.append("Player chose ROCK\n" + "Computer chose " + compChoice + "\n\n" + "YOU WIN THIS ROUND.\n\n");
-	                	} else if (compChoice == "spock" || compChoice == "paper") {
-	                		p2fld.setText(Integer.toString(++p2score));
-	                		ta.append("Player chose ROCK\n" + "Computer chose " + compChoice + "\n\n" + "COMPUTER WINS THIS ROUND.\n\n");
-	                		
-	                	} else {
-	                		ta.append("Player chose ROCK\n" + "Computer chose " + compChoice + "\n\n" + "ROUND DRAW.\n\n");
-	                	}
-	                } else if (paper.getState() == true){
-	                	if (compChoice == "rock" || compChoice == "spock") {
-	                		p1fld.setText(Integer.toString(++p1score));
-	                		ta.append("Player chose PAPER\n" + "Computer chose " + compChoice + "\n\n" + "YOU WIN THIS ROUND.\n\n");
-	                	} else if (compChoice == "scissors" || compChoice == "lizard") {
-	                		p2fld.setText(Integer.toString(++p2score));
-	                		ta.append("Player chose PAPER\n" + "Computer chose " + compChoice + "\n\n" + "COMPUTER WINS THIS ROUND.\n\n");
-	                	} else {
-	                		ta.append("Player chose PAPER\n" + "Computer chose " + compChoice + "\n\n" + "ROUND DRAW.\n\n");
-	                	}
-	                } else if (scissors.getState() == true){
-	                	if (compChoice == "lizard" || compChoice == "paper") {
-	                		p1fld.setText(Integer.toString(++p1score));
-	                		ta.append("Player chose SCISSORS\n" + "Computer chose " + compChoice + "\n\n" + "YOU WIN THIS ROUND.\n\n");
-	                	} else if (compChoice == "rock" || compChoice == "spock") {
-	                		p2fld.setText(Integer.toString(++p2score));
-	                		ta.setText("Player chose SCISSORS\n" + "Computer chose " + compChoice + "\n\n" + "COMPUTER WINS THIS ROUND.\n\n");
-	                	} else {
-	                		ta.append("Player chose SCISSORS\n" + "Computer chose " + compChoice + "\n\n" + "ROUND DRAW.\n\n");
-	                	}
-	                } else if (lizard.getState() == true){
-	                	if (compChoice == "spock" || compChoice == "paper") {
-	                		p1fld.setText(Integer.toString(++p1score));
-	                		ta.append("Player chose LIZARD\n" + "Computer chose " + compChoice + "\n\n" + "YOU WIN THIS ROUND.\n\n");
-	                	} else if (compChoice == "rock" || compChoice == "scissors") {
-	                		p2fld.setText(Integer.toString(++p2score));
-	                		ta.append("Player chose LIZARD\n" + "Computer chose " + compChoice + "\n\n" + "COMPUTER WINS THIS ROUND.\n\n");
-	                	} else {
-	                		ta.append("Player chose LIZARD\n" + "Computer chose " + compChoice + "\n\n" + "ROUND DRAW.\n\n");
-	                	}
-	                } else if (spock.getState() == true){
-	                	if (compChoice == "scissors" || compChoice == "rock") {
-	                		p1fld.setText(Integer.toString(++p1score));
-	                		ta.append("Player chose SPOCK\n" + "Computer chose " + compChoice + "\n\n" + "YOU WIN THIS ROUND.\n\n");
-	                	} else if (compChoice == "paper" || compChoice == "lizard") {
-	                		p2fld.setText(Integer.toString(++p2score));
-	                		ta.append("Player chose SPOCK\n" + "Computer chose " + compChoice + "\n\n" + "COMPUTER WINS THIS ROUND.\n\n");
-	                	} else {
-	                		ta.append("Player chose SPOCK\n" + "Computer chose " + compChoice + "\n\n" + "ROUND DRAW.\n\n");
-	                	}
-	                }
-            	} else {
-            		if (p1score > p2score) {
+        		String compChoice = compChoice();
+                if (rock.getState() == true) {
+                	if (compChoice == "lizard" || compChoice == "scissors") {
+                		p1fld.setText(Integer.toString(++p1score));
+                		ta.append("Player chose ROCK\n" + "Computer chose " + compChoice + "\n\n" + "YOU WIN THIS ROUND.\n\n");
+                	} else if (compChoice == "spock" || compChoice == "paper") {
+                		p2fld.setText(Integer.toString(++p2score));
+                		ta.append("Player chose ROCK\n" + "Computer chose " + compChoice + "\n\n" + "COMPUTER WINS THIS ROUND.\n\n");
+                		
+                	} else {
+                		ta.append("Player chose ROCK\n" + "Computer chose " + compChoice + "\n\n" + "ROUND DRAW.\n\n");
+                	}
+                } else if (paper.getState() == true){
+                	if (compChoice == "rock" || compChoice == "spock") {
+                		p1fld.setText(Integer.toString(++p1score));
+                		ta.append("Player chose PAPER\n" + "Computer chose " + compChoice + "\n\n" + "YOU WIN THIS ROUND.\n\n");
+                	} else if (compChoice == "scissors" || compChoice == "lizard") {
+                		p2fld.setText(Integer.toString(++p2score));
+                		ta.append("Player chose PAPER\n" + "Computer chose " + compChoice + "\n\n" + "COMPUTER WINS THIS ROUND.\n\n");
+                	} else {
+                		ta.append("Player chose PAPER\n" + "Computer chose " + compChoice + "\n\n" + "ROUND DRAW.\n\n");
+                	}
+                } else if (scissors.getState() == true){
+                	if (compChoice == "lizard" || compChoice == "paper") {
+                		p1fld.setText(Integer.toString(++p1score));
+                		ta.append("Player chose SCISSORS\n" + "Computer chose " + compChoice + "\n\n" + "YOU WIN THIS ROUND.\n\n");
+                	} else if (compChoice == "rock" || compChoice == "spock") {
+                		p2fld.setText(Integer.toString(++p2score));
+                		ta.setText("Player chose SCISSORS\n" + "Computer chose " + compChoice + "\n\n" + "COMPUTER WINS THIS ROUND.\n\n");
+                	} else {
+                		ta.append("Player chose SCISSORS\n" + "Computer chose " + compChoice + "\n\n" + "ROUND DRAW.\n\n");
+                	}
+                } else if (lizard.getState() == true){
+                	if (compChoice == "spock" || compChoice == "paper") {
+                		p1fld.setText(Integer.toString(++p1score));
+                		ta.append("Player chose LIZARD\n" + "Computer chose " + compChoice + "\n\n" + "YOU WIN THIS ROUND.\n\n");
+                	} else if (compChoice == "rock" || compChoice == "scissors") {
+                		p2fld.setText(Integer.toString(++p2score));
+                		ta.append("Player chose LIZARD\n" + "Computer chose " + compChoice + "\n\n" + "COMPUTER WINS THIS ROUND.\n\n");
+                	} else {
+                		ta.append("Player chose LIZARD\n" + "Computer chose " + compChoice + "\n\n" + "ROUND DRAW.\n\n");
+                	}
+                } else if (spock.getState() == true){
+                	if (compChoice == "scissors" || compChoice == "rock") {
+                		p1fld.setText(Integer.toString(++p1score));
+                		ta.append("Player chose SPOCK\n" + "Computer chose " + compChoice + "\n\n" + "YOU WIN THIS ROUND.\n\n");
+                	} else if (compChoice == "paper" || compChoice == "lizard") {
+                		p2fld.setText(Integer.toString(++p2score));
+                		ta.append("Player chose SPOCK\n" + "Computer chose " + compChoice + "\n\n" + "COMPUTER WINS THIS ROUND.\n\n");
+                	} else {
+                		ta.append("Player chose SPOCK\n" + "Computer chose " + compChoice + "\n\n" + "ROUND DRAW.\n\n");
+                	} 
+                }
+                if (p1score == 5 || p2score == 5) {
+                	if (p1score > p2score) {
             			wnnr = "Player 1";
             		} else {
             			wnnr = "Computer";
             		}
-            		gameOver(wnnr);
-            	}
+                	messg.setText("Game Over! " + wnnr + " won.");
+            		dlog.setVisible(true);
+
+                }
             }
         });
 		
@@ -134,7 +160,6 @@ public class RockPaperScissorsLizardSpock extends Frame {
 		add(p1fld);
 		add(p2lbl);
 		add(p2fld);
-		//dlog.add(ta);
 		
 		setTitle("Rock Paper Scissors Lizard Spock");
         setSize(500, 500);
@@ -145,35 +170,6 @@ public class RockPaperScissorsLizardSpock extends Frame {
                 System.exit(0);
             }
         });
-	}
-	
-	public void gameOver(String wnnr) {
-		messg.setText("Game Over! " + wnnr + " won.");
-		dlog.setLayout(new FlowLayout());
-		dlog.add(messg);
-		dlog.setSize(200, 200);
-		ok.setSize(10, 10);
-		dlog.add(ok);
-		dlog.setVisible(true);
-		
-		dlog.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent we) {
-                System.exit(0);
-            }
-        });
-		
-		ok.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				p1fld.setText("0");
-				p2fld.setText("0");
-				p1score = 0;
-				p2score = 0;
-				dlog.dispose();
-			}
-			
-		});
 	}
 	
 	public String compChoice() {
