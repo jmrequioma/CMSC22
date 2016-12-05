@@ -64,21 +64,21 @@ public class RuleThirtyYesThread {
 				// start our workers by calling start() method
 				worker[j].start();
 				while (worker[j].isAlive()) {
-	                try {
-	                    worker[j].join();
-	                } catch (InterruptedException e) {
-	                    System.err.println("thread interrupted: " + e.getMessage());
-	                }
-	            }
+					try {
+					    worker[j].join();
+					} catch (InterruptedException e) {
+					    System.err.println("thread interrupted: " + e.getMessage());
+					}
+	           		}
 			}
 			for(int k = 0,  l = 0; k < worker.length; k++) {
-                for (int val: worker[k].getPresent()) {
-                    sampleGrid[i+1][l] = val;
-                    System.out.print(val);
-                    l++;
-                }
-            }
-            System.out.println();
+				for (int val: worker[k].getPresent()) {
+				    sampleGrid[i+1][l] = val;
+				    System.out.print(val);
+				    l++;
+				}
+            		}
+            		System.out.println();
 		}
 	}
 }
