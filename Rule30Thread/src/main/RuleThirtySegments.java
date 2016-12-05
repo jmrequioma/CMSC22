@@ -8,7 +8,7 @@ public class RuleThirtySegments extends Thread{
 	private int spawn;
 	
 	public RuleThirtySegments(int[][] sampleGrid, int begin, int end, int spawn) {
-		ancestor = new int[sampleGrid.length];
+		ancestor = new int[sampleGrid[spawn].length];
 		//copy
 		for (int i = 0; i < sampleGrid.length; i++) {
 			ancestor[i] = sampleGrid[spawn][i];
