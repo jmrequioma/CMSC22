@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Arrays;
+
 public class RuleThirtySegments extends Thread{
 	private int begin;
 	private int end;
@@ -8,11 +10,8 @@ public class RuleThirtySegments extends Thread{
 	private int spawn;
 	
 	public RuleThirtySegments(int[][] sampleGrid, int begin, int end, int spawn) {
-		ancestor = new int[sampleGrid[spawn].length];
-		//copy
-		for (int i = 0; i < sampleGrid.length; i++) {
-			ancestor[i] = sampleGrid[spawn][i];
-		}
+		ancestor = new int[sampleGrid[spawn].length]; // allocate memory
+		ancestor = Arrays.copyOf(sampleGrid[spawn], sampleGrid[spawn].length);   // copy
 		this.begin = begin;
 		this.end = end;
 		this.spawn = spawn;
