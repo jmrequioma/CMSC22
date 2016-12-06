@@ -2,7 +2,7 @@ package main;
 
 import java.util.Arrays;
 
-public class RuleThirtySegments extends Thread{
+public class RuleThirtySegments extends Thread {
 	private int begin;
 	private int end;
 	private int[] ancestor;
